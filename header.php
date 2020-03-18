@@ -33,7 +33,10 @@
             // access current session to check if user is authenticated
             session_start();
             if (!empty($_SESSION['user_id'])) {
-                echo '<li class="nav-item"><a class="nav-link" href="#">' . $_SESSION['username'] . '</a></li>
+                echo '<li class="nav-item"><a class="nav-link" href="administrators.php">Administrators</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages.php">Pages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logo.php">Logo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">' . $_SESSION['username'] . '</a></li>
                     <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';
             }
             else {

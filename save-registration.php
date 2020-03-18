@@ -46,6 +46,7 @@ if ($ok) {
         // connect
         require_once 'db.php';
 
+        // separated username and email into two separate fields to allow users to have a non-email format username instead.
         // duplicate username check before insert.
         $sql = "SELECT * FROM users_2 WHERE username = :username";
         $cmd = $db->prepare($sql);

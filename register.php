@@ -3,12 +3,13 @@ $title = 'Registration';
 require_once('header.php');
 ?>
 
-<main class="container">
+<main class="container text-center">
     <h1>Register With Us!</h1>
-    <form method="post" action="save-registration.php">
+    <form method="post" action="save-registration.php" class="form-group">
         <fieldset class="form-group">
             <label for="email" class="col-md-2">Email Address:</label>
             <input name="email" id="email" required type="email"/>
+            <small id="emailHelp" class="form-text text-muted">Your email will never be shared.</small>
         </fieldset>
         <fieldset class="form-group">
             <label for="username" class="col-md-2">Username:</label>
