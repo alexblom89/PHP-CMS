@@ -14,7 +14,7 @@
 <!-- navbar from https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp -->
 <nav class="navbar navbar-expand-md bg-custom navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="index.php">COMP1006G Music Library</a>
+    <a class="navbar-brand" href="index.php">COMP1006 Assignment 2 CMS</a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -23,16 +23,16 @@
 
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="artists-list.php">Artists</a>
-            </li>
-        </ul>
+<!--        <ul class="navbar-nav">-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="artists-list.php">Artists</a>-->
+<!--            </li>-->
+<!--        </ul>-->
         <ul class="navbar-nav ml-auto">
             <?php
             // access current session to check if user is authenticated
             session_start();
-            if (!empty($_SESSION['userId'])) {
+            if (!empty($_SESSION['user_id'])) {
                 echo '<li class="nav-item"><a class="nav-link" href="#">' . $_SESSION['username'] . '</a></li>
                     <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';
             }

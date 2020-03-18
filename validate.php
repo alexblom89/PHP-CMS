@@ -21,7 +21,6 @@ $user = $cmd->fetch();
 
 if (!password_verify($password, $user['password'])) {
     header('location:login.php?invalid=true');
-    //echo 'Invalid Login';
     exit();
 }
 else {
@@ -29,13 +28,13 @@ else {
     session_start();
 
     // create a session variable called "userId" and fill it from the id in our login query above
-    $_SESSION['userId'] = $user['userId'];
+    $_SESSION['user_id'] = $user['user_id'];
 
     // also store username in a 2nd session variable to display in navbar
     $_SESSION['username'] = $username;
 
     // redirect to artists-list page
-    header('location:artists-list.php');
+    header('location:index.php');
 }
 
 $db = null;
