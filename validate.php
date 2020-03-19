@@ -24,16 +24,16 @@ if (!password_verify($password, $user['password'])) {
     exit();
 }
 else {
-    // access the existing session - we need to do this in order to read or write values to / from the session object
+    // access the existing session.
     session_start();
 
-    // create a session variable called "userId" and fill it from the id in our login query above
+    // create a session variable called "user_id" and fill it from the id in our login query above
     $_SESSION['user_id'] = $user['user_id'];
 
-    // also store username in a 2nd session variable to display in navbar
+    // store username in a 2nd session variable to display in navbar
     $_SESSION['username'] = $username;
 
-    // redirect to artists-list page
+    // redirect to home page.
     header('location:index.php');
 }
 

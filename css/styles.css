@@ -3,7 +3,7 @@
 }
 
 h1 {
-    color: #132D8F;
+    color: #660066;
 }
 
 td a {
@@ -15,7 +15,8 @@ body {
 }
 
 .bg-custom {
-    background-color: #132D8F;
+    background-color: #660066;
+;
 }
 
 html,

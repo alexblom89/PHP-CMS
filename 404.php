@@ -7,7 +7,7 @@ require_once 'header.php';
     <h1>Page Not Found!</h1>
 
     <p>Sorry but we couldn't find that page.</p>
-    <p>Please use one of the links above.</p>
+
 </main>
 
 <?php
