@@ -1,6 +1,11 @@
 <?php
-$title = 'Registration';
+$title = 'Administrator Registration    ';
 require_once('header.php');
+require_once ('authorization.php');
+
+// initialize admin variable
+$admin_id = null;
+$username = null;
 
 if(!empty($_GET['admin_id'])){
 
@@ -28,7 +33,7 @@ if(!empty($_GET['admin_id'])){
     <form method="post" action="save-admin.php" class="form-group">
         <fieldset  class="form-group">
             <label for="username" class="col-md-2">Username:</label>
-            <input name="username" id="username" required type="email"/>
+            <input name="username" id="username" required type="email" value="<?php echo $username ?>"/>
         </fieldset>
         <fieldset  class="form-group">
             <label for="password" class="col-md-2">Password:</label>
@@ -45,8 +50,9 @@ if(!empty($_GET['admin_id'])){
             <img id="showIcon" src="img/show.png" alt="Show/Hide Password" onclick="showPW()">
             <span id="pwMsg"></span>
         </fieldset>
+        <input name="admin_id" id="admin_id" value="<?php echo $admin_id; ?>" type="hidden" />
         <div class="offset-md-2">
-            <input type="submit" value="Register" class="btn btn-info" onclick="return comparePW()"/>
+            <input type="submit" value="Save" class="btn btn-info" onclick="return comparePW()"/>
         </div>
     </form>
 </main>

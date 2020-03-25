@@ -12,6 +12,7 @@
 $username = $_POST['username'];
 $password = $_POST['password'];
 $confirm = $_POST['confirm'];
+$admin_id = $_POST['admin_id']; //empty when adding, not empty when editing
 $ok = true;
 
 //check if username field is empty.
@@ -46,21 +47,26 @@ if ($ok) {
         $cmd->execute();
         $user = $cmd->fetch();
 
-        if (!empty($user)) {
-            echo 'Username already taken!<br />';
-        } else {
-            // set up & run insert
+        if(empty($admin_id)){
             $sql = "INSERT INTO administrators (username, password) VALUES (:username, :password)";
-            $cmd = $db->prepare($sql);
-            $cmd->bindParam(':username', $username, PDO::PARAM_STR, 50);
-            $cmd->bindParam(':password', $password, PDO::PARAM_STR, 255);
-            $cmd->execute();
         }
+        else {
+            $sql = "UPDATE administrators SET username = :username, password = :password WHERE admin_id = :admin_id";
+        }
+
+        $cmd = $db->prepare($sql);
+        $cmd->bindParam(':username', $username, PDO::PARAM_STR, 50);
+        $cmd->bindParam(':password', $password, PDO::PARAM_STR, 255);
+        if(!empty($admin_id)){
+            $cmd->bindParam(':admin_id', $admin_id, PDO::PARAM_INT);
+        }
+        $cmd->execute();
+
 
         // disconnect
         $db = null;
 
-        // redirect to login page
+        // show success message and redirect to administrators page
         header('location:administrators.php');
     }
     catch (Exception $e) {

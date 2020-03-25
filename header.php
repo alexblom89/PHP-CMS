@@ -37,8 +37,6 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <?php
-            // access current session to check if user is authenticated
-            session_start();
             // display username and logout links if user is logged in.
             if (!empty($_SESSION['user_id'])) {
                 echo '<li class="nav-item"><a class="nav-link" href="#">' . $_SESSION['username'] . '</a></li>
