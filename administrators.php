@@ -3,7 +3,8 @@ $title = 'Administrators';
 require_once ('header.php');
 require_once ('authorization.php');
 ?>
-
+<div class="d-flex justify-content-center"></div>
+<div class="w-50 p-3">
 <h1>List of Administrators</h1>
 
 <?php
@@ -47,6 +48,9 @@ catch (Exception $e){
     header('location:error.php');
     exit();
 }
+?>
+</div>
+<?php
 require_once 'footer.php';
 ?>
 

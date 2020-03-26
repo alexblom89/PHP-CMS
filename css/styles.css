@@ -31,3 +31,8 @@ body {
 #sticky-footer {
     flex-shrink: 0;
 }
+
+#panel {
+    display:flex;
+    justify-content: center;
+}
