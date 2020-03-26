@@ -35,3 +35,7 @@ function showPW(){
         img.src = 'img/show.png';
     }
 }
+
+function confirmDelete(){
+    return confirm('Are you sure?');
+}
