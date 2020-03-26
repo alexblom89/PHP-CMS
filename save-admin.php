@@ -7,12 +7,14 @@
 <body>
 
 <?php
-
+session_start();
 // store form inputs in variables
 $username = $_POST['username'];
 $password = $_POST['password'];
 $confirm = $_POST['confirm'];
 $admin_id = $_POST['admin_id']; //empty when adding, not empty when editing
+// grab user_id value from session variable
+$_SESSION['user_id'];
 $ok = true;
 
 //check if username field is empty.
@@ -48,15 +50,16 @@ if ($ok) {
         $user = $cmd->fetch();
 
         if(empty($admin_id)){
-            $sql = "INSERT INTO administrators (username, password) VALUES (:username, :password)";
+            $sql = "INSERT INTO administrators (username, password, user_id) VALUES (:username, :password, :user_id)";
         }
         else {
-            $sql = "UPDATE administrators SET username = :username, password = :password WHERE admin_id = :admin_id";
+            $sql = "UPDATE administrators SET username = :username, password = :password, user_id = :user_id WHERE admin_id = :admin_id";
         }
 
         $cmd = $db->prepare($sql);
         $cmd->bindParam(':username', $username, PDO::PARAM_STR, 50);
         $cmd->bindParam(':password', $password, PDO::PARAM_STR, 255);
+        $cmd->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT, 11);
         if(!empty($admin_id)){
             $cmd->bindParam(':admin_id', $admin_id, PDO::PARAM_INT);
         }

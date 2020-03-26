@@ -7,17 +7,11 @@
 <body>
 
 <?php
-// auth check
 session_start();
-
 // make this page private
 require_once 'authorization.php';
-//if (empty($_SESSION['userId'])) {
-//    header('location:login.php');
-//    exit();
-//}
 
-// parse the artistId from the url parameter
+// parse the admin_id from the url
 $admin_id = $_GET['admin_id'];
 
 // connect
@@ -28,14 +22,12 @@ $sql = "DELETE FROM administrators WHERE admin_id = :admin_id";
 // pass the admin_id parameter to the command
 $cmd = $db->prepare($sql);
 $cmd->bindParam(':admin_id', $admin_id, PDO::PARAM_INT);
-
-// execute the deletion
 $cmd->execute();
 
 // disconnect
 $db = null;
 
-// redirect back to updated administrators list page
+// redirect
 header('location:administrators.php');
 ?>
 
