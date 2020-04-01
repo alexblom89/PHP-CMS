@@ -49,7 +49,10 @@ if ($ok) {
         $cmd->execute();
         $user = $cmd->fetch();
 
-        if(empty($admin_id)){
+        if(!empty($username)){
+            echo 'Username already taken!</br>';
+        }
+        else if(empty($admin_id)){
             $sql = "INSERT INTO administrators (username, password, user_id) VALUES (:username, :password, :user_id)";
         }
         else {
