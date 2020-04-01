@@ -28,11 +28,11 @@ require_once ('authorization.php');
         echo '<table class="table table-striped table-hover"><thead><th>Title</th><th></th><th></th></thead>';
 
         foreach ($pages as $value) {
-            echo '<tr><td>' . $value['Title'] . '</td>
+            echo '<tr><td>' . $value['title'] . '</td>
 
-             <td><a href="edit-page.php?admin_id=' . $value['page_id'] . '" class="btn btn-danger">Edit</a></td>
+             <td><a href="edit-page.php?page_id=' . $value['page_id'] . '" class="btn btn-danger">Edit</a></td>
 
-             <td><a href="delete-admin.php?admin_id=' . $value['page_id'] . '" class="btn btn-danger"
+             <td><a href="delete-page.php?page_id=' . $value['page_id'] . '" class="btn btn-danger"
             onclick="return confirmDelete();">Delete</a></td>
 
              </tr>';

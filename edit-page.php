@@ -1,28 +1,27 @@
 <?php
-$title = 'Administrator Registration    ';
+$title = 'Page Details';
 require_once('header.php');
 require_once ('authorization.php');
 
-// initialize admin variable
+// initialize variables
 $page_id = null;
-$title = null;
+$page_title = null;
 $content = null;
 
 if(!empty($_GET['page_id'])){
 
-    $admin_id = $_GET['page_id'];
+    $page_id = $_GET['page_id'];
 
     require_once 'db.php';
 
-    // fetch the selected admin
+    // fetch the selected page
     $sql = "SELECT * FROM pages WHERE page_id = :page_id";
     $cmd = $db->prepare($sql);
     $cmd->bindParam(':page_id', $page_id, PDO::PARAM_INT);
     $cmd->execute();
 
-    // use fetch without a loop instead of fetchAll with a loop as we're only selecting a single record
     $page = $cmd->fetch();
-    $title = $page['title'];
+    $page_title = $page['title'];
     $content = $page['content'];
 
     // disconnect
@@ -35,7 +34,7 @@ if(!empty($_GET['page_id'])){
     <form method="post" action="save-page.php" class="form-group">
         <fieldset  class="form-group">
             <label for="title" class="col-md-2">Title:</label>
-            <input name="title" id="title" required value="<?php echo $title ?>"/>
+            <input name="title" id="title" required value="<?php echo $page_title ?>"/>
         </fieldset>
         <fieldset  class="form-group">
             <label for="content" class="col-md-2">Content:</label>

@@ -1,5 +1,5 @@
 <?php
-$title = 'Administrator Registration    ';
+$title = 'Administrator Registration';
 require_once('header.php');
 require_once ('authorization.php');
 

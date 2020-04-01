@@ -29,7 +29,7 @@ if (empty($content)) {
 
 if ($ok) {
 
-    try {
+//    try {
 
         // connect
         require_once 'db.php';
@@ -39,25 +39,28 @@ if ($ok) {
         $cmd = $db->prepare($sql);
         $cmd->bindParam(':title', $title, PDO::PARAM_STR, 50);
         $cmd->execute();
-        $user = $cmd->fetch();
+        $title_check = $cmd->fetch();
 
-        if(!empty($title)){
-            echo 'Page title already used, please enter a unique page title.';
+        if(!empty($title_check)){
+            echo 'Page title already used, please enter a unique page title.</br>';
         }
-        else if(empty($page_id)){
+
+        // insert statement
+        if(empty($page_id)){
             $sql = "INSERT INTO pages (user_id, title, content) VALUES (:user_id, :title, :content)";
         }
         else {
-            $sql = "UPDATE pages SET title = :title, content = :content WHERE page_id = :page_id";
+            $sql = "UPDATE pages SET user_id = :user_id, title = :title, content = :content WHERE page_id = :page_id";
         }
 
         $cmd = $db->prepare($sql);
-        $cmd->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT, 11);
+        $cmd->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
         $cmd->bindParam(':title', $title, PDO::PARAM_STR, 45);
-        $cmd->bindParam(':password', $password, PDO::PARAM_LOB, 255);
-        if(!empty($admin_id)){
-            $cmd->bindParam(':admin_id', $admin_id, PDO::PARAM_INT);
+        $cmd->bindParam(':content', $content, PDO::PARAM_LOB);
+        if(!empty($page_id)){
+            $cmd->bindParam(':page_id', $page_id, PDO::PARAM_INT);
         }
+
         $cmd->execute();
 
 
@@ -66,12 +69,12 @@ if ($ok) {
 
         // show success message and redirect to administrators page
         header('location:pages.php');
-    }
-    catch (Exception $e) {
-        //redirect to error page if an error is caught.
-        header('location:error.php');
-        exit();
-    }
+//    }
+//    catch (Exception $e) {
+//        //redirect to error page if an error is caught.
+//        header('location:error.php');
+//        exit();
+//    }
 }
 ?>
 
