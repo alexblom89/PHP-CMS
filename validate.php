@@ -34,7 +34,7 @@ else {
     $_SESSION['username'] = $username;
 
     // redirect to home page.
-    header('location:index.php');
+    header('location:home.php');
 }
 
 $db = null;

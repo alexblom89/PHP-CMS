@@ -1,15 +1,25 @@
 <?php
-// set page title
-$title = 'Welcome';
-require_once ('header.php');
-?>
-<main class="container">
-    <h1>Welcome to the COMP1006 Assignment 2 Content Management System</h1>
 
-    <p>This site is built with PHP, MySQL, and Bootstrap (and a bit of JavaScript).</p>
-    <p>Source code available on <a href="https://github.com/alexblom89/PHPAssignment2">Github.</a></p>
-</main>
+require_once 'client-header.php';
+$page_title = null;
+$content = null;
+
+$query = "SELECT * FROM pages WHERE page_id = :page_id;";
+$cmd = $db->prepare($query);
+$cmd->bindParam(':page_id', $page_id, PDO::PARAM_INT, 11);
+$cmd->execute();
+$page = $cmd->fetch();
+$page_title = $page['title'];
+$content = $page['content'];
+
+?>
+
+<body>
+    <h1><?php echo $page_title ?></h1>
+    <p><?php echo $content ?></p>
+</body>
+</html>
 
 <?php
-require_once 'footer.php';
-?>
+
+$db = null;

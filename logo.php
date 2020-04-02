@@ -13,8 +13,8 @@ require_once('header.php');
 
 <form method="post" action="upload-logo.php" enctype="multipart/form-data">
     <fieldset>
-        <label for="logo-file">Upload Logo File:</label>
-        <input name="logo-file" id="logo-file" type="file" />
+        <label for="logo_file">Upload Logo File:</label>
+        <input name="logo_file" id="logo_file" type="file" />
     </fieldset>
     <button>Submit</button>
 </form>

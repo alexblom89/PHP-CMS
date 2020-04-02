@@ -37,7 +37,7 @@ if ($ok) {
     // hash the password
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    try {
+//    try {
 
         // connect
         require_once 'db.php';
@@ -56,7 +56,7 @@ if ($ok) {
             $sql = "INSERT INTO administrators (username, password, user_id) VALUES (:username, :password, :user_id)";
         }
         else {
-            $sql = "UPDATE administrators SET username = :username, password = :password, user_id = :user_id WHERE admin_id = :admin_id";
+            $sql = "UPDATE administrators SET admin_id = :admin_id, username = :username, password = :password, user_id = :user_id WHERE admin_id = :admin_id";
         }
 
         $cmd = $db->prepare($sql);
@@ -74,12 +74,12 @@ if ($ok) {
 
         // show success message and redirect to administrators page
         header('location:administrators.php');
-    }
-    catch (Exception $e) {
-        //redirect to error page if an error is caught.
-        header('location:error.php');
-        exit();
-    }
+//    }
+//    catch (Exception $e) {
+//        //redirect to error page if an error is caught.
+//        header('location:error.php');
+//        exit();
+//    }
 }
 ?>
 

@@ -8,7 +8,7 @@
 
 <?php
 // get the uploaded file object
-$file = $_FILES['file1'];
+$file = $_FILES['logo_file'];
 
 // access & display properties of the uploaded file
 $name = $file['name'];
@@ -16,9 +16,6 @@ echo 'Name: $name<br/>';
 
 $tmp_name = $file['tmp_name'];
 echo "Tmp Name: $tmp_name<br/>";
-
-// don't use the type attribute as it simply checks the extension not the ACTUAL file type
-// $type = $file['type'];
 
 $type = mime_content_type($tmp_name);
 echo "Type: $type<br />";

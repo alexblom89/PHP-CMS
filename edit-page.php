@@ -35,10 +35,9 @@ if(!empty($_GET['page_id'])){
         <fieldset  class="form-group">
             <label for="title" class="col-md-2">Title:</label>
             <input name="title" id="title" required value="<?php echo $page_title ?>"/>
-        </fieldset>
-        <fieldset  class="form-group">
-            <label for="content" class="col-md-2">Content:</label>
-            <input name="content" id="content" required value="<?php echo $content ?>"/>
+        </fieldset class="form-group">
+            <label id="content_label" for="content" class="col-md-2">Content:</label>
+            <textarea name="content" id="content" required value="<?php echo $content ?>" cols="80"></textarea>
         </fieldset>
         <fieldset  class="form-group">
             <input name="page_id" id="page_id" type="hidden" value="<?php echo $page_id ?>"/>

@@ -14,7 +14,7 @@
     <!-- navbar from https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp -->
     <nav class="navbar navbar-expand-md navbar-light" style="background-color: #dd99ff">
         <!-- Brand -->
-        <a class="navbar-brand" id="title" href="index.php">COMP1006 Assignment 2 CMS</a>
+        <a class="navbar-brand" id="title" href="home.php">COMP1006 Assignment 2 CMS</a>
 
         <!-- Toggle/collapse Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -26,12 +26,25 @@
             <!-- These links will only show up for authenticated users of the site. -->
             <ul class="nav nav-pills">
                 <?php
+
                 session_start();
+
+                require_once 'db.php';
+
+                $query = "SELECT * FROM pages WHERE user_id = :user_id;";
+                $cmd = $db->prepare($query);
+                $cmd->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT, 11);
+                $cmd->execute();
+
+                $page = $cmd->fetch();
+//                $page_id = $page['page_id'];
+//                $page_title = $page['title'];
+
                 if(!empty($_SESSION['user_id'])){
                     echo '<li class="nav-item"><a class="nav-link active mx-3 bg-dark" href="administrators.php">Administrators</a></li>
                     <li class="nav-item"><a class="nav-link active mx-3 bg-dark" href="pages.php">Pages</a></li>
                     <li class="nav-item"><a class="nav-link active mx-3 bg-dark" href="logo.php">Logo</a></li>
-                    <li class="nav-item"><a class="nav-link active mx-3 bg-dark" href="public-site.php">Public Site</a></li>';
+                    <li class="nav-item"><a class="nav-link active mx-3 bg-dark" href="index.php?page_id=' . $page['page_id'] . '">Public Site</a></li>';
                 }
                 ?>
             </ul>
@@ -51,6 +64,7 @@
                         <a class="nav-link active mx-3 bg-dark" href="login.php">Login</a>
                     </li>';
                 }
+
                 ?>
             </ul>
         </div>

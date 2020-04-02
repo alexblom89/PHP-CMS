@@ -29,7 +29,7 @@ if (empty($content)) {
 
 if ($ok) {
 
-//    try {
+    try {
 
         // connect
         require_once 'db.php';
@@ -69,12 +69,12 @@ if ($ok) {
 
         // show success message and redirect to administrators page
         header('location:pages.php');
-//    }
-//    catch (Exception $e) {
-//        //redirect to error page if an error is caught.
-//        header('location:error.php');
-//        exit();
-//    }
+    }
+    catch (Exception $e) {
+        //redirect to error page if an error is caught.
+        header('location:error.php');
+        exit();
+    }
 }
 ?>
 

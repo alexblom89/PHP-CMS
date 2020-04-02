@@ -15,8 +15,6 @@ if (!empty($_SESSION['user_id'])) {
 
 try {
 
-    require_once 'db.php';
-
     $query = "SELECT * FROM administrators WHERE user_id = :user_id;";
     $cmd = $db->prepare($query);
     $cmd->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT, 11);
