@@ -37,7 +37,7 @@ if ($ok) {
     // hash the password
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-//    try {
+    try {
 
         // connect
         require_once 'db.php';
@@ -49,7 +49,7 @@ if ($ok) {
         $cmd->execute();
         $user = $cmd->fetch();
 
-        if(!empty($username)){
+        if(!empty($user)){
             echo 'Username already taken!</br>';
         }
         else if(empty($admin_id)){
@@ -74,12 +74,12 @@ if ($ok) {
 
         // show success message and redirect to administrators page
         header('location:administrators.php');
-//    }
-//    catch (Exception $e) {
-//        //redirect to error page if an error is caught.
-//        header('location:error.php');
-//        exit();
-//    }
+    }
+    catch (Exception $e) {
+        //redirect to error page if an error is caught.
+        header('location:error.php');
+        exit();
+    }
 }
 ?>
 

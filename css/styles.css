@@ -10,12 +10,12 @@ td a {
     color: #5871CC;
 }
 
-body {
-    font-family:'Montserrat', sans-serif;
+html, body, main, footer {
+    font-family: 'Gotu', sans-serif;
 }
 
 .bg-custom {
-    background-color: #660066;
+    background-color: #ffe39b;
 ;
 }
 
@@ -24,8 +24,11 @@ body {
     height: 100%;
 }
 
+
+
 #page-content {
     flex: 1 0 auto;
+    padding: 50px;
 }
 
 #sticky-footer {
@@ -35,4 +38,9 @@ body {
 #panel {
     display:flex;
     justify-content: center;
+}
+
+img {
+    height: 100px;
+    width: 200px;
 }

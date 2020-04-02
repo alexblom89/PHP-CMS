@@ -12,24 +12,30 @@ if(!empty($_GET['page_id'])){
 
     $page_id = $_GET['page_id'];
 
-    require_once 'db.php';
+    try {
+        require_once 'db.php';
 
-    // fetch the selected page
-    $sql = "SELECT * FROM pages WHERE page_id = :page_id";
-    $cmd = $db->prepare($sql);
-    $cmd->bindParam(':page_id', $page_id, PDO::PARAM_INT);
-    $cmd->execute();
+        // fetch the selected page
+        $sql = "SELECT * FROM pages WHERE page_id = :page_id";
+        $cmd = $db->prepare($sql);
+        $cmd->bindParam(':page_id', $page_id, PDO::PARAM_INT);
+        $cmd->execute();
 
-    $page = $cmd->fetch();
-    $page_title = $page['title'];
-    $content = $page['content'];
+        $page = $cmd->fetch();
+        $page_title = $page['title'];
+        $content = $page['content'];
 
-    // disconnect
-    $db = null;
+        // disconnect
+        $db = null;
+    }
+    catch (Exception $e) {
+        //redirect to error page if an error is caught.
+        header('location:error.php');
+        exit();
+    }
 }
 ?>
 
-<main class="container">
     <h1 class="text-justify">Page Setup</h1>
     <form method="post" action="save-page.php" class="form-group">
         <fieldset  class="form-group">

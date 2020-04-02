@@ -21,7 +21,7 @@ require_once ('authorization.php');
         $cmd->execute();
         $pages = $cmd->fetchAll();
 
-// 4a. Create a grid with a header row
+// Create a grid with a header row
 
         echo '<table class="table table-striped table-hover"><thead><th>Title</th><th></th><th></th></thead>';
 
@@ -36,10 +36,10 @@ require_once ('authorization.php');
              </tr>';
         }
 
-// 5a. End the HTML table
+// End the HTML table
         echo '</table>';
 
-// 6. Disconnect from the database
+// Disconnect from the database
         $db = null;
     }
     catch (Exception $e){

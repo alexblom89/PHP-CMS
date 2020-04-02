@@ -15,20 +15,29 @@ require_once 'authorization.php';
 $page_id = $_GET['page_id'];
 
 // connect
-require_once 'db.php';
+try {
 
-$sql = "DELETE FROM pages WHERE page_id = :page_id";
+
+    require_once 'db.php';
+
+    $sql = "DELETE FROM pages WHERE page_id = :page_id";
 
 // pass the page_id parameter to the command
-$cmd = $db->prepare($sql);
-$cmd->bindParam(':page_id', $page_id, PDO::PARAM_INT);
-$cmd->execute();
+    $cmd = $db->prepare($sql);
+    $cmd->bindParam(':page_id', $page_id, PDO::PARAM_INT);
+    $cmd->execute();
 
 // disconnect
-$db = null;
+    $db = null;
 
 // redirect
-header('location:pages.php');
+    header('location:pages.php');
+}
+catch (Exception $e) {
+    //redirect to error page if an error is caught.
+    header('location:error.php');
+    exit();
+}
 ?>
 
 </body>

@@ -2,9 +2,9 @@
 
 <!-- src: https://startbootstrap.com/snippets/sticky-footer-flexbox/ -->
 </main>
-<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+<footer id="sticky-footer" class="py-4 bg-custom">
     <div class="container text-center">
-        <small>Copyright &copy; 2020 - COMP1006G @ Lakehead-Georgian</small>
+        <small>Copyright &copy; 2020 - Alex Blom</small>
     </div>
 </footer>
 

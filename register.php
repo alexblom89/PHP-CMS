@@ -3,7 +3,6 @@ $title = 'Registration';
 require_once('header.php');
 ?>
 
-<main class="container">
     <h1 class="text-justify">Register With Us!</h1>
     <form method="post" action="save-registration.php" class="form-group">
         <fieldset  class="form-group">

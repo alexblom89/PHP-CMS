@@ -15,20 +15,28 @@ require_once 'authorization.php';
 $admin_id = $_GET['admin_id'];
 
 // connect
-require_once 'db.php';
+try {
 
-$sql = "DELETE FROM administrators WHERE admin_id = :admin_id";
+    require_once 'db.php';
+
+    $sql = "DELETE FROM administrators WHERE admin_id = :admin_id";
 
 // pass the admin_id parameter to the command
-$cmd = $db->prepare($sql);
-$cmd->bindParam(':admin_id', $admin_id, PDO::PARAM_INT);
-$cmd->execute();
+    $cmd = $db->prepare($sql);
+    $cmd->bindParam(':admin_id', $admin_id, PDO::PARAM_INT);
+    $cmd->execute();
 
 // disconnect
-$db = null;
+    $db = null;
 
 // redirect
-header('location:administrators.php');
+    header('location:administrators.php');
+}
+catch (Exception $e) {
+    //redirect to error page if an error is caught.
+    header('location:error.php');
+    exit();
+}
 ?>
 
 </body>

@@ -3,7 +3,6 @@ $title = 'Login';
 require_once('header.php');
 ?>
 
-<main class="container">
     <h1>Login</h1>
     <?php
     //if login is invalid, inform user.

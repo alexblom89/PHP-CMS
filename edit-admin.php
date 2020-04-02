@@ -11,24 +11,30 @@ if(!empty($_GET['admin_id'])){
 
     $admin_id = $_GET['admin_id'];
 
-    require_once 'db.php';
+    try {
+        require_once 'db.php';
 
-    // fetch the selected admin
-    $sql = "SELECT * FROM administrators WHERE admin_id = :admin_id";
-    $cmd = $db->prepare($sql);
-    $cmd->bindParam(':admin_id', $admin_id, PDO::PARAM_INT);
-    $cmd->execute();
+        // fetch the selected admin
+        $sql = "SELECT * FROM administrators WHERE admin_id = :admin_id";
+        $cmd = $db->prepare($sql);
+        $cmd->bindParam(':admin_id', $admin_id, PDO::PARAM_INT);
+        $cmd->execute();
 
-    // use fetch without a loop instead of fetchAll with a loop as we're only selecting a single record
-    $admin = $cmd->fetch();
-    $username = $admin['username'];
+        // use fetch without a loop instead of fetchAll with a loop as we're only selecting a single record
+        $admin = $cmd->fetch();
+        $username = $admin['username'];
 
-    // disconnect
-    $db = null;
+        // disconnect
+        $db = null;
+    }
+    catch (Exception $e) {
+        //redirect to error page if an error is caught.
+        header('location:error.php');
+        exit();
+    }
 }
 ?>
 
-<main class="container">
     <h1 class="text-justify">Edit Administrator</h1>
     <form method="post" action="save-admin.php" class="form-group">
         <fieldset  class="form-group">
