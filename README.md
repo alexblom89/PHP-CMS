@@ -1,8 +1,5 @@
-COMP1006 Assignment 2 Part One 
-Alex Blom - 867295
+# COMP1006 Intro to Web Programming, Assignment 2
 
-The website located at https://lamp.computerstudi.es/~Alex_S867295/Assignment2/index.php allows users to register and login to
-an admin site, from which they will eventually be able to create their own public site pages (similar to wordpress), manage the users 
-with administration access to their site, and upload a logo. 
+The purpose of this assignment is to create a simple Content Management System, with secure user registration and login. The user can login to an admin-only dashboard and create/edit their own public site pages, manage which users have administration access, and upload a logo.
 
-Code can be found at https://github.com/alexblom89/PHPAssignment2
+This project was created with PHP and a MySQL database, and styled with HTML and Bootstrap CSS.
